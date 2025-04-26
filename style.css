@@ -1,0 +1,833 @@
+/* General Reset and Global Styles */
+/* Reset default browser styles and set global properties */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+    font-family: Arial, Helvetica, sans-serif; /* Set default font */
+}
+
+/* Define CSS variables for consistent theming */
+:root {
+    --bg-color: #1f242d; /* Background color */
+    --second-bg-color: #323946; /* Secondary background color */
+    --text-color: #fff; /* Text color */
+    --main-color: #0ef; /* Primary accent color */
+}
+
+/* Global HTML and Body Styles */
+html {
+    font-size: 62.5%; /* Set base font size to 10px for easier rem calculations */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+body {
+    background-color: var(--bg-color); /* Set background color */
+    color: var(--text-color); /* Set text color */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Header Section */
+/* Style the header and its contents */
+.header {
+    position: fixed; /* Fix header at the top */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    padding: 2rem 9%; /* Add padding for spacing */
+    background: var(--bg-color); /* Background color */
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between logo and navbar */
+    align-items: center; /* Center items vertically */
+    z-index: 100; /* Ensure header is above other elements */
+}
+
+/* Add a border when the header becomes sticky */
+.header .sticky {
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+}
+
+/* Logo Styling */
+.logo {
+    white-space: nowrap; /* Prevent logo text from wrapping to the next line */
+    font-size: 2.5rem; /* Logo font size */
+    color: var(--text-color); /* Logo color */
+    font-weight: 600; /* Bold font */
+    cursor: default; /* Disable pointer cursor */
+}
+
+/* Navbar Links */
+.navbar a {
+    font-size: 1.7rem; /* Font size for links */
+    color: var(--text-color); /* Link color */
+    margin-left: 4em; /* Spacing between links */
+    font-weight: 700; /* Bold font */
+    transition: 0.3s; /* Smooth hover effect */
+}
+
+/* Hover and Active State for Navbar Links */
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color); /* Change color on hover or active */
+}
+
+/* Menu Icon for Mobile View */
+#menu-icon {
+    font-size: 3.6rem; /* Icon size */
+    color: var(--text-color); /* Icon color */
+    display: none; /* Hidden by default */
+}
+
+/* Section Styling */
+/* General styling for all sections */
+section {
+    min-height: 100vh; /* Full viewport height */
+    padding: 10rem 9% 2rem; /* Add padding for spacing */
+}
+
+/* Home Section */
+/* Layout and styling for the home section */
+.home {
+    display: flex; /* Flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+/* Home Image Styling */
+.home-image img {
+    width: 32vw; /* Responsive width */
+    border: var(--main-color) solid 8px; /* Add border */
+    border-radius: 50%; /* Circular image */
+    box-shadow: 0 0 25px var(--main-color); /* Add shadow */
+    transition: 0.4s ease-in-out; /* Smooth hover effect */
+}
+
+/* Hover Effect for Home Image */
+.home-image img:hover {
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color),
+                0 0 100px var(--main-color); /* Increase shadow on hover */
+}
+
+/* Home Content Styling */
+.home-content h2 {
+    font-size: 3.2rem; /* Subheading font size */
+    font-weight: 700; /* Bold font */
+    margin-bottom: 1.4rem; /* Spacing below */
+}
+
+span {
+    color: var(--main-color); /* Highlighted text color */
+}
+
+.home-content h1 {
+    font-size: 5.6rem; /* Main heading font size */
+    font-weight: 700; /* Bold font */
+    line-height: 1.3; /* Adjust line height */
+}
+
+.home-content p {
+    font-size: 1.6rem; /* Paragraph font size */
+}
+
+/* Social Media Links */
+.social-media a {
+    display: inline-flex; /* Inline flexbox for alignment */
+    justify-content: center; /* Center content */
+    align-items: center; /* Center content */
+    width: 4rem; /* Circle size */
+    height: 4rem; /* Circle size */
+    background: transparent; /* Transparent background */
+    border: 0.2rem solid var(--main-color); /* Border color */
+    border-radius: 50%; /* Circular shape */
+    font-size: 2rem; /* Icon size */
+    color: var(--main-color); /* Icon color */
+    margin: 3rem 1.5rem 3rem 0; /* Spacing */
+    transition: 0.5s ease; /* Smooth hover effect */
+}
+
+/* Hover Effect for Social Media Links */
+.social-media a:hover {
+    background: var(--main-color); /* Change background color */
+    color: var(--bg-color); /* Change icon color */
+    box-shadow: 0 0 1rem var(--main-color); /* Add shadow */
+}
+
+/* Button Styling */
+.button {
+    display: inline-block; /* Inline block for buttons */
+    padding: 1em 2.8rem; /* Padding for size */
+    background: var(--main-color); /* Button background */
+    border-radius: 4rem; /* Rounded corners */
+    box-shadow: 0 0 1rem var(--main-color); /* Add shadow */
+    font-size: 1.6rem; /* Font size */
+    color: var(--second-bg-color); /* Text color */
+    letter-spacing: 0.1rem; /* Add spacing between letters */
+    font-weight: 600; /* Bold font */
+    transition: 0.5s ease; /* Smooth hover effect */
+}
+
+/* Hover Effect for Buttons */
+.button:hover {
+    box-shadow: none; /* Remove shadow on hover */
+}
+
+/* Heading Styling */
+.heading {
+    font-size: 8rem; /* Font size for headings */
+    text-align: center; /* Center align text */
+    margin: 5rem 0; /* Add spacing */
+}
+
+/* Skills Section */
+/* Layout and styling for the skills section */
+.skills {
+    background: var(--bg-color); /* Background color */
+}
+
+/* Skills Images */
+.skills img {
+    max-width: 100%; /* Ensure images fit within their container */
+    width: 240px; /* Set default width */
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+/* Skills Container */
+.skills .skills-container {
+    background: var(--second-bg-color); /* Background color */
+    color: var(--text-color); /* Text color */
+    border-radius: 1rem; /* Rounded corners */
+    padding: 2rem; /* Add padding */
+    width: 90%; /* Set width */
+    margin: auto; /* Center container */
+    margin-top: 2rem; /* Add spacing above */
+    overflow: hidden; /* Hide overflow */
+}
+
+/* Skills Grid Layout */
+.skills .skills-container .row {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 1.8rem; /* Spacing between grid items */
+}
+
+/* Skills Bar Styling */
+.skills .skills-container .bar {
+    margin-bottom: 15px; /* Spacing below */
+    padding: 10px; /* Add padding */
+    border-radius: 1rem; /* Rounded corners */
+    background: var(--bg-color); /* Background color */
+    box-shadow: 0 4px 10px var(--bg-color); /* Add shadow */
+    transition: 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover Effect for Skills Bar */
+.skills .skills-container .bar:hover {
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color); /* Add shadow on hover */
+    transform: scale(1.03); /* Slightly enlarge on hover */
+}
+
+/* Skills Info */
+.skills .skills-container .bar .info {
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items */
+    gap: 1rem; /* Spacing between items */
+    margin-top: 1rem; /* Add spacing above */
+}
+
+.skills .skills-container .bar .info span {
+    font-size: 3em; /* Font size for skill name */
+    font-weight: 500; /* Bold font */
+    margin-left: 0.5rem; /* Add spacing */
+}
+
+/* Projects Section */
+/* Styling for the projects section */
+.projects {
+    background: var(--second-bg-color); /* Secondary background color */
+}
+
+/* Projects Grid Layout */
+.projects-box {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid with minimum column size */
+    place-items: center; /* Center items in the grid */
+    gap: 3rem; /* Spacing between grid items */
+    row-gap: 5rem; /* Additional spacing between rows */
+}
+
+/* Individual Project Card */
+.projects-card {
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    text-align: center; /* Center-align text */
+    background-color: var(--bg-color); /* Background color */
+    border: 2px solid var(--main-color); /* Border color */
+    border-radius: 3rem; /* Rounded corners */
+    gap: 3rem; /* Spacing between elements */
+    padding: 5rem 2rem; /* Padding inside the card */
+    height: 600px; /* Fixed height */
+    overflow: hidden; /* Hide overflow */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0 0 5px var(--main-color); /* Add shadow */
+    transition: 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover Effect for Project Card */
+.projects-card:hover {
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color); /* Increase shadow on hover */
+    transform: scale(1.03); /* Slightly enlarge on hover */
+}
+
+/* Project Card Image */
+.projects-card img {
+    max-width: 100%; /* Ensure image fits within the card */
+    border-radius: 2em; /* Rounded corners */
+    object-fit: cover; /* Maintain aspect ratio */
+    height: 200px; /* Fixed height */
+}
+
+/* Project Card Title */
+.projects-card h3 {
+    font-size: 3rem; /* Font size for project title */
+}
+
+/* Project Card Description */
+.projects-card p {
+    font-size: 1.6rem; /* Font size for project description */
+}
+
+/* Education Section */
+/* Styling for the education section */
+.education {
+    padding: 100px 15px; /* Add padding for spacing */
+    background: var(--bg-color); /* Background color */
+}
+
+/* Education Section Heading */
+.education h2 {
+    margin-bottom: 5rem; /* Spacing below the heading */
+}
+
+/* Timeline Container */
+.timeline-items {
+    max-width: 1200px; /* Maximum width for the timeline */
+    margin: auto; /* Center the timeline */
+    display: flex; /* Flexbox for layout */
+    flex-wrap: wrap; /* Wrap items to the next line */
+    position: relative; /* Position for pseudo-elements */
+    overflow: visible; /* Allow overflow */
+}
+
+/* Vertical Line in the Timeline */
+.timeline-items::before {
+    content: ''; /* Empty content for the line */
+    position: absolute; /* Position relative to the container */
+    width: 5px; /* Line width */
+    height: 420%; /* Line height */
+    background-color: var(--main-color); /* Line color */
+    left: 50%; /* Center the line */
+}
+
+/* Individual Timeline Item */
+.timeline-item {
+    margin-bottom: 40px; /* Spacing below each item */
+    width: 100%; /* Full width */
+    position: relative; /* Position for pseudo-elements */
+}
+
+/* Remove Margin for the Last Timeline Item */
+.timeline-item:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Odd Timeline Items (Left Side) */
+.timeline-item:nth-of-type(odd) {
+    padding-right: calc(50% + 30px); /* Align to the left */
+    text-align: right; /* Right-align text */
+}
+
+/* Even Timeline Items (Right Side) */
+.timeline-item:nth-of-type(even) {
+    padding-left: calc(50% + 30px); /* Align to the right */
+    text-align: left; /* Left-align text */
+}
+
+/* Timeline Dot */
+.timeline-dot {
+    height: 21px; /* Dot size */
+    width: 21px; /* Dot size */
+    background-color: var(--main-color); /* Dot color */
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color); /* Add shadow */
+    position: absolute; /* Position relative to the timeline */
+    left: calc(50% - 8px); /* Center the dot */
+    border-radius: 50%; /* Circular shape */
+    top: 10px; /* Position from the top */
+}
+
+/* Timeline Date */
+.timeline-date {
+    font-size: 2rem; /* Font size for the date */
+    font-weight: 800; /* Bold font */
+    color: white; /* Text color */
+    margin: 6px 0 15px; /* Spacing around the date */
+}
+
+/* Timeline Content */
+.timeline-content {
+    background-color: var(--second-bg-color); /* Background color */
+    border: 3px solid var(--main-color); /* Border color */
+    padding: 3rem 5rem; /* Padding inside the content */
+    border-radius: 4rem; /* Rounded corners */
+    box-shadow: 0 0 10px var(--main-color); /* Add shadow */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover Effect for Timeline Content */
+.timeline-content:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 0 25px var(--main-color); /* Increase shadow on hover */
+}
+
+/* Timeline Content Title */
+.timeline-content h3 {
+    font-size: 2rem; /* Font size for the title */
+    color: white; /* Text color */
+    margin: 0 0 10px; /* Spacing below the title */
+    font-weight: 500; /* Medium font weight */
+}
+
+/* Timeline Content Description */
+.timeline-content p {
+    color: white; /* Text color */
+    font-size: 1.6rem; /* Font size for the description */
+    font-weight: 300; /* Light font weight */
+    line-height: 22px; /* Line height for readability */
+}
+
+/* Achievements Section */
+/* Styling for the achievements section */
+.achievements {
+    padding: 5rem 9%; /* Add padding for spacing */
+    background: var(--second-bg-color); /* Secondary background color */
+    text-align: center; /* Center-align text */
+}
+
+/* Achievements Section Heading */
+.achievements .heading {
+    font-size: 5rem; /* Font size for the heading */
+    margin-bottom: 3rem; /* Spacing below the heading */
+    color: var(--text-color); /* Text color */
+}
+
+/* Slider Container */
+.slider {
+    position: relative; /* Position for pseudo-elements */
+    overflow: hidden; /* Hide overflow */
+    max-width: 800px; /* Maximum width for the slider */
+    margin: auto; /* Center the slider */
+    width: 100%; /* Full width */
+    height: 600px; /* Fixed height */
+}
+
+/* Slider Track */
+.slider-track {
+    display: flex; /* Flexbox for layout */
+    transition: transform 0.5s ease-in-out; /* Smooth slide transition */
+    width: 100%; /* Full width */
+}
+
+/* Individual Slide */
+.slide {
+    display: flex; /* Flexbox for layout */
+    flex: 0 0 100%; /* Each slide takes up 100% of the slider width */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    min-width: 100%; /* Minimum width for each slide */
+}
+
+/* Achievement Card */
+.achievement-card {
+    width: 100%; /* Full width */
+    max-width: 800px; /* Maximum width for the card */
+    background: var(--bg-color); /* Background color */
+    border: 4px solid var(--main-color); /* Border color */
+    border-radius: 3rem; /* Rounded corners */
+    padding: 3rem; /* Padding inside the card */
+    box-shadow: 0 0 5px var(--main-color); /* Add shadow */
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    gap: 3rem; /* Spacing between elements */
+    height: 600px; /* Fixed height */
+    margin: auto; /* Center the card */
+    position: relative; /* Position for pseudo-elements */
+}
+
+/* Hover Effect for Achievement Card Image */
+.achievement-card img:hover {
+    transform: scale(1.15); /* Slightly enlarge on hover */
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color); /* Add shadow on hover */
+}
+
+/* Achievement Card Image */
+.achievement-card img {
+    width: 100%; /* Full width */
+    max-width: 50rem; /* Maximum width for the image */
+    border-radius: 2em; /* Rounded corners */
+    object-fit: cover; /* Maintain aspect ratio */
+    box-shadow: 0 0 15px var(--main-color); /* Add shadow */
+    transition: 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+/* Achievement Card Description */
+.achievement-card .description {
+    color: var(--text-color); /* Text color */
+}
+
+/* Achievement Card Title */
+.achievement-card .description h3 {
+    font-size: 2.5rem; /* Font size for the title */
+    margin-bottom: 1rem; /* Spacing below the title */
+}
+
+/* Achievement Card Text */
+.achievement-card .description p {
+    font-size: 1.6rem; /* Font size for the description */
+}
+
+/* Special Achievement Card */
+/* Styling for special achievement cards */
+.special-achievement-card {
+    width: 100%; /* Full width */
+    max-width: 800px; /* Maximum width for the card */
+    background: var(--bg-color); /* Background color */
+    border: 4px solid var(--main-color); /* Border color */
+    border-radius: 3rem; /* Rounded corners */
+    padding: 3rem; /* Padding inside the card */
+    box-shadow: 0 0 5px var(--main-color); /* Add shadow */
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    gap: 3rem; /* Spacing between elements */
+    height: 600px; /* Fixed height */
+    margin: auto; /* Center the card */
+    position: relative; /* Position for pseudo-elements */
+}
+
+/* Hover Effect for Special Achievement Card Image */
+.special-achievement-card img:hover {
+    transform: scale(1.15); /* Slightly enlarge on hover */
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color); /* Add shadow on hover */
+}
+
+/* Special Achievement Card Image */
+.special-achievement-card img {
+    width: 100%; /* Full width */
+    max-width: 330px; /* Maximum width for the image */
+    border-radius: 2em; /* Rounded corners */
+    object-fit: cover; /* Maintain aspect ratio */
+    box-shadow: 0 0 15px var(--main-color); /* Add shadow */
+    transition: 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+/* Special Achievement Card Description */
+.special-achievement-card .description {
+    color: var(--text-color); /* Text color */
+}
+
+/* Special Achievement Card Title */
+.special-achievement-card .description h3 {
+    font-size: 2.5rem; /* Font size for the title */
+    margin-bottom: 1rem; /* Spacing below the title */
+}
+
+/* Special Achievement Card Text */
+.special-achievement-card .description p {
+    font-size: 1.6rem; /* Font size for the description */
+}
+
+/* Slider Controls */
+/* Styling for the slider controls */
+.slider-controls {
+    position: absolute; /* Position relative to the slider */
+    top: 50%; /* Center vertically */
+    left: 0;
+    right: 0;
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space controls on both sides */
+    transform: translateY(-50%); /* Adjust position */
+    pointer-events: none; /* Disable pointer events by default */
+}
+
+/* Slider Control Buttons */
+.slider-controls button {
+    background: var(--second-bg-color); /* Background color */
+    color: var(--main-color); /* Text color */
+    border: none; /* Remove border */
+    padding: 1rem 2rem; /* Add padding for size */
+    margin: 0 1rem; /* Spacing between buttons */
+    font-size: 2rem; /* Font size */
+    border-radius: 50%; /* Circular shape */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: 0.3s ease; /* Smooth hover effect */
+    pointer-events: all; /* Enable pointer events */
+}
+
+/* Hover Effect for Slider Control Buttons */
+.slider-controls button:hover {
+    background: var(--text-color); /* Change background color */
+    color: var(--main-color); /* Change text color */
+    box-shadow: 0 0 10px var(--main-color); /* Add shadow */
+}
+
+/* YouTube Section */
+/* Styling for the YouTube section */
+.youtube {
+    display: flex; /* Flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    gap: 10rem; /* Spacing between elements */
+    background: var(--bg-color); /* Background color */
+}
+
+/* YouTube Image */
+.youtube-image img {
+    width: 32vw; /* Responsive width */
+    border: var(--main-color) solid 2px; /* Add border */
+    border-radius: 50%; /* Circular image */
+    box-shadow: 0 0 25px var(--main-color); /* Add shadow */
+    transition: 0.4s ease-in-out; /* Smooth hover effect */
+}
+
+/* Hover Effect for YouTube Image */
+.youtube-image img:hover {
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color),
+                0 0 100px var(--main-color); /* Increase shadow on hover */
+}
+
+/* YouTube Content Title */
+.youtube-content h2 {
+    font-size: 5rem; /* Font size for the title */
+    font-weight: 700; /* Bold font */
+    text-align: left; /* Left-align text */
+    margin-bottom: 1.4rem; /* Spacing below the title */
+}
+
+/* YouTube Content Description */
+.youtube-content p {
+    font-size: 1.8rem; /* Font size for the description */
+}
+
+/* Button in YouTube Section */
+.youtube-content .button {
+    margin: 3rem 0; /* Spacing around the button */
+}
+
+/* Footer Section */
+/* Styling for the footer */
+.footer {
+    display: flex; /* Flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    flex-wrap: wrap; /* Wrap items to the next line */
+    padding: 2rem 9%; /* Add padding for spacing */
+    background: var(--second-bg-color); /* Secondary background color */
+}
+
+/* Footer Text */
+.footer-text p {
+    font-size: 1.6rem; /* Font size for the text */
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 15px; /* Scrollbar width */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--main-color); /* Scrollbar thumb color */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color); /* Scrollbar track color */
+}
+
+/* Media Queries for Responsive Design */
+
+/* Large Screens (Max Width: 1200px) */
+@media (max-width: 1200px) {
+    html {
+        font-size: 55%; /* Reduce the base font size for better scaling */
+    }
+}
+
+/* Large-Medium Screens (Max Width: 990px) */
+@media (max-width: 990px) {
+    .skills .skills-container .row {
+        grid-template-columns: repeat(2, 1fr); /* Adjust grid to 2 columns */
+        margin: 1rem; /* Add margin around the grid */
+        padding: 2rem 0.2rem 2rem 0.2rem; /* Adjust padding for spacing */
+        gap: 1rem; /* Reduce the gap between grid items */
+    }
+
+    .skills .skills-container {
+        margin-top: 5px; /* Add a small margin above the container */
+        width: 100%; /* Ensure the container takes full width */
+    }
+}
+
+/* Medium Screens (Max Width: 770px) */
+@media (max-width: 770px) {
+    html {
+        font-size: 50%; /* Reduce font size for smaller screens */
+    }
+    
+    .header {
+        padding: 2rem 3%; /* Reduce header padding for smaller screens */
+    }
+
+    .home {
+        flex-direction: column-reverse; /* Stack home section content vertically */
+        gap: 5rem; /* Add spacing between elements */
+    }
+
+    .home-content {
+        align-items: center; /* Center-align home content */
+        text-align: center; /* Center-align text */
+    }
+
+    section {
+        padding: 5rem 5%; /* Reduce section padding for smaller screens */
+        width: 100%; /* Ensure sections take full width */
+    }
+
+    .timeline-items::before {
+        left: 8px; /* Adjust the vertical timeline line position */
+    }
+
+    .timeline-item:nth-of-type(odd) {
+        padding-right: 0; /* Remove right padding for odd timeline items */
+        text-align: left; /* Align text to the left */
+    }
+
+    .timeline-item:nth-of-type(odd),
+    .timeline-item:nth-of-type(even) {
+        padding-left: 37px; /* Add consistent left padding for all items */
+    }
+
+    .timeline-dot {
+        left: 0; /* Adjust the position of the timeline dots */
+    }
+    
+    .slider-controls {
+        position: absolute; /* Position slider controls relative to the slider */
+        top: auto; /* Remove top alignment */
+        bottom: 0; /* Align controls to the bottom */
+        left: 0;
+        right: 0;
+        justify-content: center; /* Center-align the slider controls */
+    }
+
+    .youtube {
+        flex-direction: column-reverse; /* Stack YouTube section content vertically */
+        text-align: center; /* Center-align text */
+        gap: 5rem; /* Add spacing between elements */
+    }
+
+    .youtube h2 {
+        text-align: center; /* Center-align the YouTube section heading */
+        margin: 2rem 0; /* Add spacing around the heading */
+    }
+
+    .youtube-image img {
+        width: 56vw; /* Adjust YouTube image width for smaller screens */
+    }
+
+    .projects {
+        padding-bottom: 7em; /* Add bottom padding to the projects section */
+    }
+
+    #menu-icon {
+        display: block; /* Show the menu icon for mobile view */
+    }
+
+    .navbar {
+        position: absolute; /* Position the navbar relative to the header */
+        top: 100%; /* Place the navbar below the header */
+        left: 0;
+        width: 100%; /* Ensure the navbar takes full width */
+        padding: 1rem 3%; /* Add padding for spacing */
+        border-top: 0.1rem solid rgba(0, 0, 0, 0.2); /* Add a border at the top */
+        background: var(--bg-color); /* Set the navbar background color */
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+        display: none; /* Hide the navbar by default */
+    }
+
+    .navbar.active {
+        display: block; /* Show the navbar when active */
+    }
+
+    .navbar a {
+        display: block; /* Stack navbar links vertically */
+        font-size: 2rem; /* Adjust font size for smaller screens */
+        margin: 3rem 0; /* Add spacing between links */
+    }
+
+    .home-content h3 {
+        font-size: 2.6rem; /* Reduce subheading font size */
+    }
+
+    .home-content h1 {
+        font-size: 5rem; /* Reduce main heading font size */
+    }
+
+    .home-image img {
+        width: 70vw; /* Adjust home image width */
+        margin-top: 4rem; /* Add spacing above the image */
+    }
+
+    .achievement-card img {
+        width: 350px; /* Reduce achievement card image width */
+    }
+
+    .special-achievement-card img {
+        width: 270px; /* Reduce special achievement card image width */
+    }
+}
+
+/* Small Screens (Max Width: 617px) */
+@media (max-width: 617px) {
+    .skills .skills-container .row {
+        grid-template-columns: repeat(1, 1fr); /* Stack skills section content vertically */
+    };
+}
+
+/* Extra Small Screens (Max Width: 480px) */
+@media (max-width: 480px) {
+    section {
+        padding: 3rem 3%; /* Reduce section padding for very small screens */
+    }
+
+    .achievement-card img {
+        width: 280px; /* Further reduce achievement card image width */
+    }
+
+    .special-achievement-card img {
+        width: 200px; /* Further reduce special achievement card image width */
+    }
+}
