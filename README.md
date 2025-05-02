@@ -1,3 +1,3 @@
 # AbdulAzizNawawipersonalportfolio
 
-The comments are located in CSS and Javascript iles for easy use of code and readabiliy
+The comments are located in HTML, CSS and Javascript files for easy use of code and readabiliy
