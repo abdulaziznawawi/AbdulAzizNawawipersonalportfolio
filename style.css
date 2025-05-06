@@ -64,7 +64,7 @@ body {
 .navbar a {
     font-size: 1.7rem; /* Font size for links */
     color: var(--text-color); /* Link color */
-    margin-left: 4em; /* Spacing between links */
+    margin-left: 2em; /* Spacing between links */
     font-weight: 700; /* Bold font */
     transition: 0.3s; /* Smooth hover effect */
 }
@@ -253,6 +253,19 @@ span {
     background: var(--second-bg-color); /* Secondary background color */
 }
 
+/* Styling for the projects container */
+.projects-container {
+    position: relative; /* Position the container relative to its parent */
+    width: 100%; /* Make the container take up the full width */
+}
+
+/* Styling for the projects wrapper */
+.projects-wrapper {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack child elements vertically */
+    gap: 0; /* Remove any gap between child elements */
+}
+
 /* Projects Grid Layout */
 .projects-box {
     display: grid; /* Use grid layout */
@@ -260,10 +273,20 @@ span {
     place-items: center; /* Center items in the grid */
     gap: 3rem; /* Spacing between grid items */
     row-gap: 5rem; /* Additional spacing between rows */
+    opacity: 1; /* Ensure the box is fully visible */
+    visibility: visible; /* Ensure the box is visible */
+    animation: none; /* Disable animations by default */
+}
+
+/* Styling for the hidden projects box */
+.projects-box.hidden {
+    display: none; /* Hide the box when it is marked as hidden */
+    margin-top: 0; /* Remove any additional margin at the top */
 }
 
 /* Individual Project Card */
 .projects-card {
+    position: relative; /* Position the card relative to its parent */
     display: flex; /* Flexbox for layout */
     flex-direction: column; /* Stack items vertically */
     align-items: center; /* Center items horizontally */
@@ -279,6 +302,10 @@ span {
     cursor: pointer; /* Pointer cursor on hover */
     box-shadow: 0 0 5px var(--main-color); /* Add shadow */
     transition: 0.3s ease; /* Smooth hover effect */
+    z-index: 1; /* Ensure the card is above other elements */
+    opacity: 1; /* Ensure the card is fully visible */
+    visibility: visible; /* Ensure the card is visible */
+    animation: fadeIn 0.5s ease-in-out; /* Apply a fade-in animation with a duration of 0.5 seconds */
 }
 
 /* Hover Effect for Project Card */
@@ -304,6 +331,57 @@ span {
 /* Project Card Description */
 .projects-card p {
     font-size: 1.6rem; /* Font size for project description */
+}
+
+/* Styling for the toggle button */
+.toggle-button {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    gap: 1rem; /* Add spacing between the button text and icon */
+    margin: 4rem auto; /* Add vertical spacing and center the button horizontally */
+    padding: 2rem 4rem; /* Add padding inside the button for size */
+    background: var(--bg-color); /* Set the background color using a CSS variable */
+    color: var(--main-color); /* Set the text color using a CSS variable */
+    border-radius: 4rem; /* Round the corners of the button */
+    font-size: 2.5rem; /* Set the font size for the button text */
+    cursor: pointer; /* Change the cursor to a pointer when hovering over the button */
+    transition: 0.3s ease; /* Add a smooth transition effect for hover states */
+    width: 300px; /* Set a fixed width for the button */
+    height: 100px; /* Set a fixed height for the button */
+    box-shadow: 0 0 5px var(--main-color); /* Add a subtle shadow around the button */
+}
+
+/* Hover effect for the toggle button */
+.toggle-button:hover {
+    background: var(--text-color); /* Change the background color on hover */
+    color: var(--main-color); /* Change the text color on hover */
+    box-shadow: 0 0 25px var(--main-color), /* Add a larger shadow on hover */
+                0 0 50px var(--main-color); /* Add an even larger shadow for a glowing effect */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+/* Styling for the toggle button icon */
+.toggle-icon {
+    font-size: 3rem; /* Set the font size for the icon */
+    transition: transform 0.3s ease; /* Add a smooth transition effect for rotation */
+}
+
+/* Styling for the toggle button when active */
+.toggle-button.active .toggle-icon {
+    transform: rotate(180deg); /* Rotate the icon 180 degrees when the button is active */
+}
+
+/* Keyframes for the fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Start with the card fully transparent */
+        transform: translateY(20px); /* Start with the card slightly below its final position */
+    }
+    to {
+        opacity: 1; /* End with the card fully visible */
+        transform: translateY(0); /* End with the card in its final position */
+    }
 }
 
 /* Education Section */
@@ -390,7 +468,6 @@ span {
     padding: 3rem 5rem; /* Padding inside the content */
     border-radius: 4rem; /* Rounded corners */
     box-shadow: 0 0 10px var(--main-color); /* Add shadow */
-    cursor: pointer; /* Pointer cursor on hover */
     transition: 0.3s ease; /* Smooth hover effect */
 }
 
@@ -667,8 +744,8 @@ span {
     background: var(--bg-color); /* Scrollbar track color */
 }
 
-/* Media Queries for Responsive Design */
 
+/* Media Queries for Responsive Design */
 /* Large Screens (Max Width: 1200px) */
 @media (max-width: 1200px) {
     html {
@@ -701,69 +778,9 @@ span {
         padding: 2rem 3%; /* Reduce header padding for smaller screens */
     }
 
-    .home {
-        flex-direction: column-reverse; /* Stack home section content vertically */
-        gap: 5rem; /* Add spacing between elements */
-    }
-
-    .home-content {
-        align-items: center; /* Center-align home content */
-        text-align: center; /* Center-align text */
-    }
-
-    section {
-        padding: 5rem 5%; /* Reduce section padding for smaller screens */
-        width: 100%; /* Ensure sections take full width */
-    }
-
-    .timeline-items::before {
-        left: 8px; /* Adjust the vertical timeline line position */
-    }
-
-    .timeline-item:nth-of-type(odd) {
-        padding-right: 0; /* Remove right padding for odd timeline items */
-        text-align: left; /* Align text to the left */
-    }
-
-    .timeline-item:nth-of-type(odd),
-    .timeline-item:nth-of-type(even) {
-        padding-left: 37px; /* Add consistent left padding for all items */
-    }
-
-    .timeline-dot {
-        left: 0; /* Adjust the position of the timeline dots */
-    }
-    
-    .slider-controls {
-        position: absolute; /* Position slider controls relative to the slider */
-        top: auto; /* Remove top alignment */
-        bottom: 0; /* Align controls to the bottom */
-        left: 0;
-        right: 0;
-        justify-content: center; /* Center-align the slider controls */
-    }
-
-    .youtube {
-        flex-direction: column-reverse; /* Stack YouTube section content vertically */
-        text-align: center; /* Center-align text */
-        gap: 5rem; /* Add spacing between elements */
-    }
-
-    .youtube h2 {
-        text-align: center; /* Center-align the YouTube section heading */
-        margin: 2rem 0; /* Add spacing around the heading */
-    }
-
-    .youtube-image img {
-        width: 56vw; /* Adjust YouTube image width for smaller screens */
-    }
-
-    .projects {
-        padding-bottom: 7em; /* Add bottom padding to the projects section */
-    }
-
     #menu-icon {
         display: block; /* Show the menu icon for mobile view */
+        cursor: pointer; /* Pointer cursor on hover */
     }
 
     .navbar {
@@ -788,6 +805,16 @@ span {
         margin: 3rem 0; /* Add spacing between links */
     }
 
+    .home {
+        flex-direction: column-reverse; /* Stack home section content vertically */
+        gap: 5rem; /* Add spacing between elements */
+    }
+
+    .home-content {
+        align-items: center; /* Center-align home content */
+        text-align: center; /* Center-align text */
+    }
+
     .home-content h3 {
         font-size: 2.6rem; /* Reduce subheading font size */
     }
@@ -801,12 +828,70 @@ span {
         margin-top: 4rem; /* Add spacing above the image */
     }
 
+    section {
+        padding: 5rem 5%; /* Reduce section padding for smaller screens */
+        width: 100%; /* Ensure sections take full width */
+    }
+
+    .projects {
+        padding-bottom: 7em; /* Add bottom padding to the projects section */
+    }
+
+    .toggle-button {
+        width: 250px; /* Reduce the width of the toggle button for smaller screens */
+        height: 80px; /* Reduce the height of the toggle button for smaller screens */
+        font-size: 2rem; /* Reduce the font size of the button text */
+        padding: 1.5rem 3rem; /* Adjust padding for a smaller button */
+    }
+
+    .timeline-items::before {
+        left: 8px; /* Adjust the vertical timeline line position */
+    }
+
+    .timeline-item:nth-of-type(odd) {
+        padding-right: 0; /* Remove right padding for odd timeline items */
+        text-align: left; /* Align text to the left */
+    }
+
+    .timeline-item:nth-of-type(odd),
+    .timeline-item:nth-of-type(even) {
+        padding-left: 37px; /* Add consistent left padding for all items */
+    }
+
+    .timeline-dot {
+        left: 0; /* Adjust the position of the timeline dots */
+    }
+
     .achievement-card img {
         width: 350px; /* Reduce achievement card image width */
     }
 
     .special-achievement-card img {
         width: 270px; /* Reduce special achievement card image width */
+    }
+    
+    .slider-controls {
+        position: absolute; /* Position slider controls relative to the slider */
+        top: auto; /* Remove top alignment */
+        bottom: 0; /* Align controls to the bottom */
+        left: 0;
+        right: 0;
+        justify-content: center; /* Center-align the slider controls */
+    }
+
+    .youtube {
+        flex-direction: column-reverse; /* Stack YouTube section content vertically */
+        text-align: center; /* Center-align text */
+        gap: 5rem; /* Add spacing between elements */
+    }
+
+    .youtube h2 {
+        text-align: center; /* Center-align the YouTube section heading */
+        margin: 2rem 0; /* Add spacing around the heading */
+    }
+
+    .youtube-image img {
+        width: 56vw; /* Adjust YouTube image width for smaller screens */
     }
 }
 
