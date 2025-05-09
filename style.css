@@ -534,59 +534,8 @@ span {
     min-width: 100%; /* Minimum width for each slide */
 }
 
-/* Achievement Card */
-.achievement-card {
-    width: 100%; /* Full width */
-    max-width: 800px; /* Maximum width for the card */
-    background: var(--bg-color); /* Background color */
-    border: 4px solid var(--main-color); /* Border color */
-    border-radius: 3rem; /* Rounded corners */
-    padding: 3rem; /* Padding inside the card */
-    box-shadow: 0 0 5px var(--main-color); /* Add shadow */
-    display: flex; /* Flexbox for layout */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    gap: 3rem; /* Spacing between elements */
-    height: 600px; /* Fixed height */
-    margin: auto; /* Center the card */
-    position: relative; /* Position for pseudo-elements */
-}
-
-/* Hover Effect for Achievement Card Image */
-.achievement-card img:hover {
-    transform: scale(1.15); /* Slightly enlarge on hover */
-    box-shadow: 0 0 25px var(--main-color),
-                0 0 50px var(--main-color); /* Add shadow on hover */
-}
-
-/* Achievement Card Image */
-.achievement-card img {
-    width: 100%; /* Full width */
-    max-width: 50rem; /* Maximum width for the image */
-    border-radius: 2em; /* Rounded corners */
-    object-fit: cover; /* Maintain aspect ratio */
-    box-shadow: 0 0 15px var(--main-color); /* Add shadow */
-    transition: 0.3s ease-in-out; /* Smooth hover effect */
-}
-
-/* Achievement Card Description */
-.achievement-card .description {
-    color: var(--text-color); /* Text color */
-}
-
-/* Achievement Card Title */
-.achievement-card .description h3 {
-    font-size: 2.5rem; /* Font size for the title */
-    margin-bottom: 1rem; /* Spacing below the title */
-}
-
-/* Achievement Card Text */
-.achievement-card .description p {
-    font-size: 1.6rem; /* Font size for the description */
-}
-
-/* Special Achievement Card */
-/* Styling for special achievement cards */
+/* Achievement Cards Base Styles */
+.achievement-card,
 .special-achievement-card {
     width: 100%; /* Full width */
     max-width: 800px; /* Maximum width for the card */
@@ -604,35 +553,48 @@ span {
     position: relative; /* Position for pseudo-elements */
 }
 
-/* Hover Effect for Special Achievement Card Image */
-.special-achievement-card img:hover {
-    transform: scale(1.15); /* Slightly enlarge on hover */
-    box-shadow: 0 0 25px var(--main-color),
-                0 0 50px var(--main-color); /* Add shadow on hover */
-}
-
-/* Special Achievement Card Image */
+/* Achievement Card Images Base Styles */
+.achievement-card img,
 .special-achievement-card img {
     width: 100%; /* Full width */
-    max-width: 330px; /* Maximum width for the image */
     border-radius: 2em; /* Rounded corners */
     object-fit: cover; /* Maintain aspect ratio */
     box-shadow: 0 0 15px var(--main-color); /* Add shadow */
     transition: 0.3s ease-in-out; /* Smooth hover effect */
 }
 
-/* Special Achievement Card Description */
+/* Specific max-width for different card types */
+.achievement-card img {
+    max-width: 50rem; /* Maximum width for achievement card image */
+}
+
+.special-achievement-card img {
+    max-width: 330px; /* Maximum width for special achievement card image */
+}
+
+/* Hover Effect for Achievement Card Images */
+.achievement-card img:hover,
+.special-achievement-card img:hover {
+    transform: scale(1.15); /* Slightly enlarge on hover */
+    box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color); /* Add shadow on hover */
+}
+
+/* Achievement Card Description */
+.achievement-card .description,
 .special-achievement-card .description {
     color: var(--text-color); /* Text color */
 }
 
-/* Special Achievement Card Title */
+/* Achievement Card Title */
+.achievement-card .description h3,
 .special-achievement-card .description h3 {
     font-size: 2.5rem; /* Font size for the title */
     margin-bottom: 1rem; /* Spacing below the title */
 }
 
-/* Special Achievement Card Text */
+/* Achievement Card Text */
+.achievement-card .description p,
 .special-achievement-card .description p {
     font-size: 1.6rem; /* Font size for the description */
 }
