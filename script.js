@@ -223,58 +223,82 @@ document.addEventListener('DOMContentLoaded', () => {
     mainProjects.style.display = 'grid'; // Ensure the main projects container is displayed as a grid
     mainProjects.style.opacity = '1'; // Set the main projects container to fully visible
 
-    // Toggle button event listener
+    // Add an event listener to the toggle button for showing/hiding projects
     toggleBtn.addEventListener('click', () => {
-        isExpanded = !isExpanded; // Toggle the state
-        toggleBtn.classList.toggle('active'); // Toggle the "active" class on the button
+        // Toggle the expanded state (true/false)
+        isExpanded = !isExpanded;
+
+        // Add or remove the 'active' class on the toggle button for visual feedback
+        toggleBtn.classList.toggle('active');
         
         if (isExpanded) {
-            // Show More
-            hiddenProjects.style.display = 'grid'; // Display the hidden projects container
-            mainProjects.style.display = 'grid'; // Ensure the main projects container is still displayed
-            toggleText.textContent = 'Show Less'; // Update the button text
+            // When the "Show More" button is clicked
+            // Clean up any existing ScrollReveal animations on the hidden projects
+            ScrollReveal().clean(hiddenProjects);
             
-            // Set spacing for hidden projects
+            // Update the styles of the hidden projects container to make it visible
             Object.assign(hiddenProjects.style, {
-                padding: '2rem', // Add padding to the hidden projects container
-                gap: '2rem', // Add gap between elements in the hidden projects container
-                marginTop: '2rem' // Add top margin to the hidden projects container
+                display: 'grid', // Display the container as a grid
+                opacity: '1', // Make it fully visible
+                visibility: 'visible', // Ensure it is visible
+                transform: 'none', // Reset any transformations
+                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', // Responsive grid layout
+                gap: '3rem', // Space between grid items
+                rowGap: '5rem', // Additional space between rows
+                marginTop: '3rem' // Add margin above the hidden projects
+            });
+
+            // Update the toggle button text to "Show Less"
+            toggleText.textContent = 'Show Less';
+            
+            // Update the styles of each project card inside the hidden projects container
+            hiddenProjects.querySelectorAll('.projects-card').forEach(card => {
+                Object.assign(card.style, {
+                    display: 'flex', // Use flexbox for layout
+                    flexDirection: 'column', // Stack items vertically
+                    alignItems: 'center', // Center items horizontally
+                    justifyContent: 'center', // Center items vertically
+                    textAlign: 'center', // Center-align text
+                    padding: '5rem 2rem', // Add padding inside the card
+                    gap: '3rem', // Space between elements inside the card
+                    height: '600px' // Set a fixed height for the card
+                });
             });
             
-            // Reveal hidden projects
-            ScrollReveal().reveal(hiddenProjects.querySelectorAll('.projects-card'), {
-                ...srConfig, // Use the global ScrollReveal configuration
-                origin: 'bottom', // Animate from the bottom
-                distance: '40px', // Set animation distance to 40px
-                duration: 1000, // Set animation duration to 1000ms
-                delay: 100 // Set animation delay to 100ms
-            });
-            
-            hiddenProjects.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Smoothly scroll to the hidden projects container
+            // Smoothly scroll to the hidden projects section
+            hiddenProjects.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
         } else {
-            // Show Less
-            hiddenProjects.style.display = 'none'; // Hide the hidden projects container
-            mainProjects.style.display = 'grid'; // Ensure the main projects container is still displayed
-            toggleText.textContent = 'Show More'; // Update the button text
+            // When the "Show Less" button is clicked
+            // Hide the hidden projects container
+            hiddenProjects.style.display = 'none';
 
-            // Reset spacing and reveal sections
-            resetSectionSpacing(); // Reset spacing for all sections
+            // Ensure the main projects container is displayed as a grid
+            mainProjects.style.display = 'grid';
+
+            // Update the toggle button text to "Show More"
+            toggleText.textContent = 'Show More';
+
+            // Reset the spacing and layout of all sections
+            resetSectionSpacing();
             
-            // Reset project boxes spacing
+            // Update the styles of the main projects container
             Object.assign(mainProjects.style, {
-                padding: '2rem', // Add padding to the main projects container
-                gap: '2rem' // Add gap between elements in the main projects container
+                padding: '2rem', // Add padding inside the container
+                gap: '2rem' // Space between grid items
             });
-            document.querySelector('.projects-wrapper').style.gap = '2rem'; // Add gap between elements in the projects wrapper
-
-            // Scroll to projects section
+            
+            // Update the spacing of the projects wrapper
+            document.querySelector('.projects-wrapper').style.gap = '2rem';
+            
+            // Smoothly scroll to the projects section
             document.getElementById('projects').scrollIntoView({
-                behavior: 'smooth', // Smoothly scroll to the projects section
-                block: 'start' // Align the projects section to the top of the viewport
+                behavior: 'smooth', // Smooth scrolling animation
+                block: 'start' // Align the section to the top of the viewport
             });
-
-            // Re-reveal all sections
-            revealAllSections(); // Reapply animations to all sections
+            
+            // Reinitialize animations for all sections
+            revealAllSections();
         }
     });
 });
