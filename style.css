@@ -281,7 +281,7 @@ span {
 /* Styling for the hidden projects box */
 .projects-box.hidden {
     display: none; /* Hide the box when it is marked as hidden */
-    margin-top: 0; /* Remove any additional margin at the top */
+    margin-top: 3rem; /* Gap between the hidden projects box and the projects box */
 }
 
 /* Individual Project Card */
