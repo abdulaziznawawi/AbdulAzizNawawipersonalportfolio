@@ -28,7 +28,7 @@ html {
 body {
     background-color: var(--bg-color); /* Set background color */
     color: var(--text-color); /* Set text color */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow: hidden; /* Hide overflow */
 }
 
 /* Header Section */
