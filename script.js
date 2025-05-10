@@ -136,169 +136,101 @@ document.querySelector('.prev').onclick = () => moveSlide('prev'); // Adds a cli
 window.addEventListener('resize', updateSlider); // Adds an event listener to update the slider's position when the window is resized.
 
 // ----------------------------------- ScrollReveal Configuration -----------------------------------
+// Define configuration object for ScrollReveal animations
 const srConfig = {
-    reset: false, // Prevent animations from resetting when elements leave the viewport
-    distance: '80px', // Distance the elements move during the animation
-    duration: 2000, // Duration of the animation in milliseconds
-    delay: 200, // Delay before the animation starts in milliseconds
-    cleanup: false, // Prevent ScrollReveal from removing elements after animation
-    mobile: true, // Enable animations on mobile devices
-    beforeReveal: (el) => {
-        el.style.visibility = 'visible'; // Ensure the element is visible before the animation
-        el.style.opacity = '1'; // Set the element's opacity to fully visible
-        el.style.transform = 'none'; // Reset any existing transformations
-    },
-    afterReveal: (el) => {
-        el.style.opacity = '1'; // Ensure the element remains fully visible after the animation
-        el.style.visibility = 'visible'; // Keep the element visible after the animation
-        el.style.transform = 'none'; // Reset any transformations applied during the animation
-    }
+    reset: false, // Prevents animations from replaying when scrolling back
+    distance: '80px', // Distance elements move during animation
+    duration: 2000, // Animation duration in milliseconds
+    delay: 200, // Delay before animation starts
+    cleanup: false // Prevents cleanup of animation styles
 };
 
-// ----------------------------------- Section Animations Configuration -----------------------------------
-const sectionAnimations = [
-    // Left and Right animations for home and YouTube sections
-    { selector: '.home-content', origin: 'left' }, // Animate home content from the left
-    { selector: '.home-image', origin: 'right' }, // Animate home image from the right
-    { selector: '.youtube-image', origin: 'left' }, // Animate YouTube image from the left
-    { selector: '.youtube-content', origin: 'right' }, // Animate YouTube content from the right
+// Create new ScrollReveal instance with configuration
+const sr = ScrollReveal(srConfig);
 
-    // Top animation for section headings
-    { selector: '.heading', origin: 'top' }, // Animate section headings from the top
+// Set up reveal animations for different elements grouped by animation direction
+// Top animations
+sr.reveal('.home-content, .youtube-content, .heading', { origin: 'top' });
+// Bottom animations
+sr.reveal('.home-img, .skills-container, .projects-box, .timeline-content, .timeline-date, .slider', { origin: 'bottom' });
+// Left animations
+sr.reveal('.home-content h1, .home-image, .youtube-image', { origin: 'left' });
+// Right animations
+sr.reveal('.home-content p, .home-content, .youtube-content', { origin: 'right' });
 
-    // Bottom animation for various sections
-    { selector: '.skills-container, .projects-box, .education, .timeline-content, .timeline-date, .slider', origin: 'bottom' } // Animate skills, projects, education, timeline, and slider from the bottom
-];
-
-// ----------------------------------- DOMContentLoaded Event Listener -----------------------------------
+// ----------------------------------- Show More Projects -----------------------------------
+// Wait for DOM to fully load before initializing
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize ScrollReveal with global settings
-    ScrollReveal(srConfig); // Apply the global ScrollReveal configuration
+    // Get references to key DOM elements
+    const toggleBtn = document.getElementById('toggleProjects'); // Show More button
+    const hiddenProjects = document.querySelector('.projects-box.hidden'); // Hidden projects container
+    const mainProjects = document.querySelector('.projects-box:not(.hidden)'); // Main projects container
 
-    // Projects toggle functionality
-    const toggleBtn = document.getElementById('toggleProjects'); // Select the toggle button for showing/hiding projects
-    const hiddenProjects = document.querySelector('.projects-box.hidden'); // Select the hidden projects container
-    const mainProjects = document.querySelector('.projects-box:not(.hidden)'); // Select the main projects container
-    const toggleText = toggleBtn.querySelector('.toggle-text'); // Select the text inside the toggle button
-    let isExpanded = false; // Initialize the toggle state as collapsed
-
-    // Function to reveal all sections
-    function revealAllSections() {
-        sectionAnimations.forEach(({ selector, origin }) => {
-            ScrollReveal().reveal(selector, {
-                ...srConfig, // Use the global ScrollReveal configuration
-                origin // Apply the specific animation origin for each section
-            });
-        });
+    // Set up initial display states
+    if (mainProjects) {
+        mainProjects.style.display = 'grid'; // Show main projects in grid layout
+        mainProjects.style.opacity = '1'; // Ensure main projects are fully visible
     }
 
-    // Function to reset section spacing
-    function resetSectionSpacing() {
-        // Reset all sections
-        document.querySelectorAll('section').forEach(section => {
-            Object.assign(section.style, {
-                display: '', // Reset display property to default
-                visibility: 'visible', // Ensure the section is visible
-                opacity: '1', // Set the section's opacity to fully visible
-                position: 'relative', // Reset position to relative
-                zIndex: '1' // Reset z-index to default
-            });
-        });
-
-        // Reset header and container spacing
-        document.querySelector('header').style.marginBottom = '0'; // Remove any bottom margin from the header
-        const projectsContainer = document.querySelector('.projects-container'); // Select the projects container
-        Object.assign(projectsContainer.style, {
-            marginTop: '0', // Reset top margin
-            padding: '2rem' // Set padding to 2rem
-        });
-
-        // Reset section spacing
-        document.querySelector('.skills').style.marginTop = '2rem'; // Add top margin to the skills section
-        document.querySelector('.projects').style.marginBottom = '2rem'; // Add bottom margin to the projects section
+    if (hiddenProjects) {
+        hiddenProjects.style.display = 'none'; // Hide additional projects initially
     }
 
-    // Initial setup
-    revealAllSections(); // Reveal all sections on page load
-    mainProjects.style.display = 'grid'; // Ensure the main projects container is displayed as a grid
-    mainProjects.style.opacity = '1'; // Set the main projects container to fully visible
-
-    // Add an event listener to the toggle button for showing/hiding projects
+    // Add click event handler for the show more button
     toggleBtn.addEventListener('click', () => {
-        // Toggle the expanded state (true/false)
-        isExpanded = !isExpanded;
+        // Configure hidden projects container with initial animation state
+        Object.assign(hiddenProjects.style, {
+            display: 'grid', // Show as grid layout
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', // Responsive grid columns
+            gap: '3rem', // Space between grid items
+            opacity: '0', // Start transparent for fade in
+            visibility: 'visible', // Make visible but transparent
+            transform: 'translateY(40px)' // Start position for slide up animation
+        });
 
-        // Add or remove the 'active' class on the toggle button for visual feedback
-        toggleBtn.classList.toggle('active');
-        
-        if (isExpanded) {
-            // When the "Show More" button is clicked
-            // Clean up any existing ScrollReveal animations on the hidden projects
-            ScrollReveal().clean(hiddenProjects);
-            
-            // Update the styles of the hidden projects container to make it visible
+        // Animate in the hidden projects after initial setup
+        setTimeout(() => {
             Object.assign(hiddenProjects.style, {
-                display: 'grid', // Display the container as a grid
-                opacity: '1', // Make it fully visible
-                visibility: 'visible', // Ensure it is visible
-                transform: 'none', // Reset any transformations
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', // Responsive grid layout
-                gap: '3rem', // Space between grid items
-                rowGap: '5rem', // Additional space between rows
-                marginTop: '3rem' // Add margin above the hidden projects
+                opacity: '1', // Fade in to full opacity
+                transform: 'translateY(0)', // Slide up to final position
+                transition: 'all 0.5s ease' // Smooth animation
             });
 
-            // Update the toggle button text to "Show Less"
-            toggleText.textContent = 'Show Less';
-            
-            // Update the styles of each project card inside the hidden projects container
-            hiddenProjects.querySelectorAll('.projects-card').forEach(card => {
-                Object.assign(card.style, {
-                    display: 'flex', // Use flexbox for layout
-                    flexDirection: 'column', // Stack items vertically
-                    alignItems: 'center', // Center items horizontally
-                    justifyContent: 'center', // Center items vertically
-                    textAlign: 'center', // Center-align text
-                    padding: '5rem 2rem', // Add padding inside the card
-                    gap: '3rem', // Space between elements inside the card
-                    height: '600px' // Set a fixed height for the card
-                });
+            // Re-initialize animations for education section
+            sr.reveal('.education', { 
+                origin: 'bottom', // Slide up from bottom
+                distance: '80px', // Movement distance
+                duration: 2000, // Animation duration
+                delay: 300, // Slight delay after projects
+                reset: false // Prevent animation reset
             });
-            
-            // Smoothly scroll to the hidden projects section
-            hiddenProjects.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-        } else {
-            // When the "Show Less" button is clicked
-            // Hide the hidden projects container
-            hiddenProjects.style.display = 'none';
-
-            // Ensure the main projects container is displayed as a grid
-            mainProjects.style.display = 'grid';
-
-            // Update the toggle button text to "Show More"
-            toggleText.textContent = 'Show More';
-
-            // Reset the spacing and layout of all sections
-            resetSectionSpacing();
-            
-            // Update the styles of the main projects container
-            Object.assign(mainProjects.style, {
-                padding: '2rem', // Add padding inside the container
-                gap: '2rem' // Space between grid items
+            // Re-initialize animations for achievements section
+            sr.reveal('.achievements', { 
+                origin: 'bottom', // Slide up from bottom
+                distance: '80px', // Movement distance
+                duration: 2000, // Animation duration
+                delay: 400, // Delayed after education
+                reset: false // Prevent animation reset
             });
-            
-            // Update the spacing of the projects wrapper
-            document.querySelector('.projects-wrapper').style.gap = '2rem';
-            
-            // Smoothly scroll to the projects section
-            document.getElementById('projects').scrollIntoView({
+            // Re-initialize animations for YouTube section
+            sr.reveal('.youtube', { 
+                origin: 'bottom', // Slide up from bottom
+                distance: '80px', // Movement distance
+                duration: 2000, // Animation duration
+                delay: 500, // Delayed after achievements
+                reset: false // Prevent animation reset
+            });
+        }, 50); // Short delay for initial setup
+
+        // Hide the show more button since it's no longer needed
+        toggleBtn.style.display = 'none';
+
+        // Scroll to show the newly revealed projects
+        setTimeout(() => {
+            hiddenProjects.scrollIntoView({ // Scroll hidden projects into view
                 behavior: 'smooth', // Smooth scrolling animation
-                block: 'start' // Align the section to the top of the viewport
+                block: 'start' // Align to top of viewport
             });
-            
-            // Reinitialize animations for all sections
-            revealAllSections();
-        }
+        }, 100); // Delay scroll until after animation starts
     });
 });
