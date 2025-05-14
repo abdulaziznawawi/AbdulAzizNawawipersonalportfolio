@@ -398,7 +398,6 @@ span {
 
 /* Timeline Container */
 .timeline-items {
-    max-width: 1200px; /* Maximum width for the timeline */
     margin: auto; /* Center the timeline */
     display: flex; /* Flexbox for layout */
     flex-wrap: wrap; /* Wrap items to the next line */
@@ -708,6 +707,13 @@ span {
 
 
 /* Media Queries for Responsive Design */
+/* Extra Large Screens (Minimum Width: 1400px) */
+@media (min-width: 1400px) {
+    section {
+        padding: 10rem 15%; /* Increase padding for better content width */
+    }
+}
+
 /* Large Screens (Max Width: 1200px) */
 @media (max-width: 1200px) {
     html {
