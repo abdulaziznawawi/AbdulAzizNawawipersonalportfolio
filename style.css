@@ -86,6 +86,7 @@ body {
 /* General styling for all sections */
 section {
     min-height: 100vh; /* Full viewport height */
+    min-width: 100vw; /* Full viewport width */
     padding: 10rem 9% 2rem; /* Add padding for spacing */
 }
 
@@ -707,6 +708,34 @@ span {
 
 
 /* Media Queries for Responsive Design */
+/* Extra Extra Large Screens (1800px and above) */
+@media (min-width: 1800px) {
+    section {
+        padding: 12rem 20%; /* Add 12rem padding on top/bottom and 20% on left/right for better spacing */
+        max-width: 2000px; /* Limit the maximum width of sections to 2000px for readability */
+        margin: 0 auto; /* Center the section horizontally */
+    }
+    
+    .projects-container {
+        max-width: 1600px; /* Limit the width of the projects container to 1600px */
+        margin: 0 auto; /* Center the projects container horizontally */
+    }
+
+    .projects-box,
+    .projects-box.hidden {
+        grid-template-columns: repeat(3, minmax(350px, 450px)); /* Create a grid with exactly 3 columns, each column between 350px and 450px wide */
+        max-width: 1600px; /* Limit the width of the grid to 1600px */
+        margin: 0 auto; /* Center the grid horizontally */
+        place-content: center; /* Center the content of the grid both vertically and horizontally */
+        gap: 4rem; /* Add 4rem spacing between grid items */
+    }
+
+    .projects-card {
+        width: 100%; /* Make each project card take up the full width of its grid cell */
+        max-width: 450px; /* Limit the maximum width of each project card to 450px */
+    }
+}
+
 /* Extra Large Screens (Minimum Width: 1400px) */
 @media (min-width: 1400px) {
     section {
