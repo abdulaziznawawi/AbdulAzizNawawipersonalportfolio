@@ -82,7 +82,7 @@ function moveSlide(direction) {
             sliderTrack.offsetHeight; // Forces a reflow to ensure the transition reset is applied.
 
             // Re-enable smooth transitions for the next movement
-            sliderTrack.style.transition = 'transform 0.5s ease'; // Re-enables smooth transitions for the next slide movement.
+            sliderTrack.style.transition = 'transform 0.5s ease-in-out'; // Re-enables smooth transitions for the next slide movement.
 
             // Move to the first slide
             currentIndex = 0; // Resets the index to 0 to show the first slide.
