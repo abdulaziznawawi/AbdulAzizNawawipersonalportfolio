@@ -108,7 +108,7 @@ function moveSlide(direction) {
             sliderTrack.offsetHeight; // Forces a reflow to ensure the transition reset is applied.
 
             // Re-enable smooth transitions
-            sliderTrack.style.transition = 'transform 0.5s ease'; // Re-enables smooth transitions for the next slide movement.
+            sliderTrack.style.transition = 'transform 0.5s ease-in-out'; // Re-enables smooth transitions for the next slide movement.
 
             // Move to the last slide
             currentIndex = totalSlides - 1; // Resets the index to the last slide.
