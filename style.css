@@ -15,6 +15,23 @@
 :root {
     --bg-color: #1f242d; /* Background color */
     --second-bg-color: #323946; /* Secondary background color */
+    --text-color/* General Reset and Global Styles */
+/* Reset default browser styles and set global properties */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+    font-family: Arial, Helvetica, sans-serif; /* Set default font */
+}
+
+/* Define CSS variables for consistent theming */
+:root {
+    --bg-color: #1f242d; /* Background color */
+    --second-bg-color: #323946; /* Secondary background color */
     --text-color: #fff; /* Text color */
     --main-color: #0ef; /* Primary accent color */
 }
@@ -133,6 +150,7 @@ span {
 
 .home-content p {
     font-size: 1.6rem; /* Paragraph font size */
+    line-height: 1.5; /* Adjust line height */
 }
 
 /* Social Media Links */
@@ -282,7 +300,9 @@ span {
 /* Styling for the hidden projects box */
 .projects-box.hidden {
     display: none; /* Hide the box when it is marked as hidden */
-    margin-top: 3rem; /* Gap between the hidden projects box and the projects box */
+    margin-top: 5rem; /* Gap between the hidden projects box and the projects box */
+    gap: 3rem; /* Spacing between grid items */
+    row-gap: 5rem; /* Additional spacing between rows */
 }
 
 /* Individual Project Card */
@@ -515,7 +535,7 @@ span {
     max-width: 800px; /* Maximum width for the slider */
     margin: auto; /* Center the slider */
     width: 100%; /* Full width */
-    height: 600px; /* Fixed height */
+    height: 650px; /* Fixed height */
 }
 
 /* Slider Track */
@@ -548,7 +568,7 @@ span {
     flex-direction: column; /* Stack items vertically */
     align-items: center; /* Center items horizontally */
     gap: 3rem; /* Spacing between elements */
-    height: 600px; /* Fixed height */
+    height: 650px; /* Fixed height */
     margin: auto; /* Center the card */
     position: relative; /* Position for pseudo-elements */
 }
@@ -591,12 +611,14 @@ span {
 .special-achievement-card .description h3 {
     font-size: 2.5rem; /* Font size for the title */
     margin-bottom: 1rem; /* Spacing below the title */
+    line-height: 1.5; /* Adjust line height */
 }
 
 /* Achievement Card Text */
 .achievement-card .description p,
 .special-achievement-card .description p {
     font-size: 1.6rem; /* Font size for the description */
+    line-height: 1.5; /* Adjust line height */
 }
 
 /* Slider Controls */
@@ -670,6 +692,7 @@ span {
 /* YouTube Content Description */
 .youtube-content p {
     font-size: 1.8rem; /* Font size for the description */
+    line-height: 1.5; /* Adjust line height */
 }
 
 /* Button in YouTube Section */
@@ -708,38 +731,67 @@ span {
 
 
 /* Media Queries for Responsive Design */
-/* Extra Extra Large Screens (1800px and above) */
-@media (min-width: 1800px) {
-    section {
-        padding: 12rem 20%; /* Add 12rem padding on top/bottom and 20% on left/right for better spacing */
-        max-width: 2000px; /* Limit the maximum width of sections to 2000px for readability */
-        margin: 0 auto; /* Center the section horizontally */
-    }
-    
-    .projects-container {
-        max-width: 1600px; /* Limit the width of the projects container to 1600px */
-        margin: 0 auto; /* Center the projects container horizontally */
-    }
-
-    .projects-box,
-    .projects-box.hidden {
-        grid-template-columns: repeat(3, minmax(350px, 450px)); /* Create a grid with exactly 3 columns, each column between 350px and 450px wide */
-        max-width: 1600px; /* Limit the width of the grid to 1600px */
-        margin: 0 auto; /* Center the grid horizontally */
-        place-content: center; /* Center the content of the grid both vertically and horizontally */
-        gap: 4rem; /* Add 4rem spacing between grid items */
-    }
-
-    .projects-card {
-        width: 100%; /* Make each project card take up the full width of its grid cell */
-        max-width: 450px; /* Limit the maximum width of each project card to 450px */
-    }
-}
-
-/* Extra Large Screens (Minimum Width: 1400px) */
+/* Extra Extra Large Screens (1400px and above) */
 @media (min-width: 1400px) {
     section {
-        padding: 10rem 15%; /* Increase padding for better content width */
+        padding: 15rem 15%; /* Add generous padding for large screens */
+    }
+    
+    .projects-box,
+    .projects-box.hidden {
+        grid-template-columns: repeat(3, minmax(350px, 450px)) !important; /* Force 3 columns with defined min/max widths */
+        max-width: 1600px; /* Limit the maximum width of the grid */
+        width: 100%; /* Ensure the grid takes up full width */
+        margin: 0 auto; /* Center the grid horizontally */
+        place-content: center; /* Center the content of the grid */
+        gap: 3rem; /* Add spacing between grid items */
+        row-gap: 5rem; /* Add vertical spacing between rows */
+    }
+
+    .projects-box.hidden {
+        margin-top: 5rem; /* Add spacing above the hidden projects box */
+    }
+ 
+    .slider {
+        max-width: 1200px; /* Limit the maximum width of the slider */
+        height: 1000px; /* Set a fixed height for the slider */
+        margin: 0 auto; /* Center the slider horizontally */
+    }
+
+    .achievement-card,
+    .special-achievement-card {
+        max-width: 1200px; /* Limit the maximum width of achievement cards */
+        height: 1000px; /* Set a fixed height for achievement cards */
+        padding: 5rem; /* Add padding inside the cards */
+        gap: 4rem; /* Add spacing between elements inside the cards */
+    }
+
+    .achievement-card img {
+        max-width: 800px; /* Limit the maximum width of images in regular achievement cards */
+        object-fit: cover; /* Ensure images maintain their aspect ratio */
+    }
+
+    .special-achievement-card img {
+        max-width: 500px; /* Limit the maximum width of images in special achievement cards */
+        object-fit: cover; /* Ensure images maintain their aspect ratio */
+    }
+
+    /* Larger text for achievements */
+    .achievement-card .description h3,
+    .special-achievement-card .description h3 {
+        font-size: 3.5rem; /* Increase font size for achievement titles */
+        margin-bottom: 2rem; /* Add spacing below the titles */
+    }
+
+    .achievement-card .description p,
+    .special-achievement-card .description p {
+        font-size: 2.5rem; /* Increase font size for achievement descriptions */
+    }
+
+    /* Larger slider controls */
+    .slider-controls button {
+        font-size: 3rem; /* Increase font size for slider control buttons */
+        padding: 2rem 3rem; /* Add padding for larger buttons */
     }
 }
 
