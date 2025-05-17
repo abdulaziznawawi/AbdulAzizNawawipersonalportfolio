@@ -15,23 +15,6 @@
 :root {
     --bg-color: #1f242d; /* Background color */
     --second-bg-color: #323946; /* Secondary background color */
-    --text-color/* General Reset and Global Styles */
-/* Reset default browser styles and set global properties */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
-    font-family: Arial, Helvetica, sans-serif; /* Set default font */
-}
-
-/* Define CSS variables for consistent theming */
-:root {
-    --bg-color: #1f242d; /* Background color */
-    --second-bg-color: #323946; /* Secondary background color */
     --text-color: #fff; /* Text color */
     --main-color: #0ef; /* Primary accent color */
 }
