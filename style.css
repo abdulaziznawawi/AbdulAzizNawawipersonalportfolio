@@ -538,8 +538,8 @@ span {
 }
 
 /* Achievement Cards Base Styles */
-.achievement-card,
-.special-achievement-card {
+.horizontal-achievement-card,
+.vertical-achievement-card {
     width: 100%; /* Full width */
     max-width: 800px; /* Maximum width for the card */
     background: var(--bg-color); /* Background color */
@@ -557,8 +557,8 @@ span {
 }
 
 /* Achievement Card Images Base Styles */
-.achievement-card img,
-.special-achievement-card img {
+.horizontal-achievement-card img,
+.vertical-achievement-card img {
     width: 100%; /* Full width */
     border-radius: 2em; /* Rounded corners */
     object-fit: cover; /* Maintain aspect ratio */
@@ -567,39 +567,39 @@ span {
 }
 
 /* Specific max-width for different card types */
-.achievement-card img {
-    max-width: 50rem; /* Maximum width for achievement card image */
+.horizontal-achievement-card img {
+    max-width: 50rem; /* Maximum width for horizontal achievement card image */
 }
 
-.special-achievement-card img {
-    max-width: 330px; /* Maximum width for special achievement card image */
+.vertical-achievement-card img {
+    max-width: 330px; /* Maximum width for vertical achievement card image */
 }
 
 /* Hover Effect for Achievement Card Images */
-.achievement-card img:hover,
-.special-achievement-card img:hover {
+.horizontal-achievement-card img:hover,
+.vertical-achievement-card img:hover {
     transform: scale(1.15); /* Slightly enlarge on hover */
     box-shadow: 0 0 25px var(--main-color),
                 0 0 50px var(--main-color); /* Add shadow on hover */
 }
 
 /* Achievement Card Description */
-.achievement-card .description,
-.special-achievement-card .description {
+.horizontal-achievement-card .description,
+.vertical-achievement-card .description {
     color: var(--text-color); /* Text color */
 }
 
 /* Achievement Card Title */
-.achievement-card .description h3,
-.special-achievement-card .description h3 {
+.horizontal-achievement-card .description h3,
+.vertical-achievement-card .description h3 {
     font-size: 2.5rem; /* Font size for the title */
     margin-bottom: 1rem; /* Spacing below the title */
     line-height: 1.5; /* Adjust line height */
 }
 
 /* Achievement Card Text */
-.achievement-card .description p,
-.special-achievement-card .description p {
+.horizontal-achievement-card .description p,
+.vertical-achievement-card .description p {
     font-size: 1.6rem; /* Font size for the description */
     line-height: 1.5; /* Adjust line height */
 }
