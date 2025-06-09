@@ -741,33 +741,33 @@ span {
         margin: 0 auto; /* Center the slider horizontally */
     }
 
-    .achievement-card,
-    .special-achievement-card {
+    .horizontal-achievement-card,
+    .vertical-achievement-card {
         max-width: 1200px; /* Limit the maximum width of achievement cards */
         height: 1000px; /* Set a fixed height for achievement cards */
         padding: 5rem; /* Add padding inside the cards */
         gap: 4rem; /* Add spacing between elements inside the cards */
     }
 
-    .achievement-card img {
-        max-width: 800px; /* Limit the maximum width of images in regular achievement cards */
+    .horizontal-achievement-card img {
+        max-width: 800px; /* Limit the maximum width of images in horizontal achievement cards */
         object-fit: cover; /* Ensure images maintain their aspect ratio */
     }
 
-    .special-achievement-card img {
-        max-width: 500px; /* Limit the maximum width of images in special achievement cards */
+    .vertical-achievement-card img {
+        max-width: 500px; /* Limit the maximum width of images in vertical achievement cards */
         object-fit: cover; /* Ensure images maintain their aspect ratio */
     }
 
     /* Larger text for achievements */
-    .achievement-card .description h3,
-    .special-achievement-card .description h3 {
+    .horizontal-achievement-card .description h3,
+    .vertical-achievement-card .description h3 {
         font-size: 3.5rem; /* Increase font size for achievement titles */
         margin-bottom: 2rem; /* Add spacing below the titles */
     }
 
-    .achievement-card .description p,
-    .special-achievement-card .description p {
+    .horizontal-achievement-card .description p,
+    .vertical-achievement-card .description p {
         font-size: 2.5rem; /* Increase font size for achievement descriptions */
     }
 
@@ -894,12 +894,12 @@ span {
         left: 0; /* Adjust the position of the timeline dots */
     }
 
-    .achievement-card img {
-        width: 350px; /* Reduce achievement card image width */
+    .horizontal-achievement-card img {
+        width: 350px; /* Reduce horizontal achievement card image width */
     }
 
-    .special-achievement-card img {
-        width: 270px; /* Reduce special achievement card image width */
+    .vertical-achievement-card img {
+        width: 270px; /* Reduce vertical achievement card image width */
     }
     
     .slider-controls {
@@ -940,11 +940,11 @@ span {
         padding: 3rem 3%; /* Reduce section padding for very small screens */
     }
 
-    .achievement-card img {
-        width: 280px; /* Further reduce achievement card image width */
+    .horizontal-achievement-card img {
+        width: 280px; /* Further reduce horizontal achievement card image width */
     }
 
-    .special-achievement-card img {
-        width: 200px; /* Further reduce special achievement card image width */
+    .vertical-achievement-card img {
+        width: 200px; /* Further reduce vertical achievement card image width */
     }
 }
